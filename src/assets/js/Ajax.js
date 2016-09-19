@@ -25,7 +25,7 @@ const Ajax = function(url, data, beforeSend, success, error, complete) {
     };
     initPar = $.extend(initPar, data);
     var parameter = {
-        sign: Sign(initPar),
+        sign: Sign.setSign(initPar),
         data: JSON.stringify(initPar)
     };
     $.ajax({
@@ -33,10 +33,6 @@ const Ajax = function(url, data, beforeSend, success, error, complete) {
         url: STATIC_RUL + url,
         data: parameter,
         timeout: 6000,
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true,
         dataType: 'json',
         beforeSend: function() {
             beforeSend();

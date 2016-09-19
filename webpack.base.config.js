@@ -13,7 +13,11 @@ module.exports = {
     //输出文件
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'js/[name].js'
+        //被列在entry中，却又需要被打包出来的文件命名配置
+        filename: 'js/[name].js',
+        //使webpack支持分片thunks
+        //未被列在entry中，却又需要被打包出来的文件命名配置
+        chunkFilename: 'js/[name].js'
     },
 
     resolve: {
